@@ -15,7 +15,7 @@ const winConditions = [
     [2, 4, 6]
 ];
 // Temp placeholders for each cell
-let placeholder = [[''], [''], [''], [''], [''], [''], [''], [''], ['']];
+let placeholder = ['', '', '', '', '', '', '', '', ''];
 
 // Current Player and Game Status
 let currentPlayer = 'X';
@@ -38,7 +38,6 @@ function isClicked(){
     }
 
     update(this, cellIndex);
-    userChange();
     checkWinner();
 }
 
@@ -54,4 +53,43 @@ function userChange(){
 function update(cell, index){
     placeholder[index] = currentPlayer;
     cell.textContent = currentPlayer;
+}
+
+function checkWinner(){
+    let winner = false;
+
+    // Iterate through winConditions and check if any player has won
+    for (let i = 0; i < winConditions.length; i++){
+        const checkCondition = winConditions[i];
+        const checkOne = placeholder[checkCondition[0]];
+        const checkTwo = placeholder[checkCondition[1]];
+        const checkThree = placeholder[checkCondition[2]];
+
+        // Skip if any cell is empty in the condition otherwise permanent draw
+        if (checkOne == '' || checkTwo == '' || checkThree ==''){
+            continue;
+        }
+
+        console.log(checkOne)
+        // Check if all conditions are the same
+        if (checkOne == checkTwo && checkTwo == checkThree){
+            winner = true;
+            break;
+        }
+    }
+
+    // Check if there is a winner or a draw
+    if (winner){
+        currentStatus.textContent = `${currentPlayer} Wins`;
+        isRunning = false;
+    } else if(!placeholder.includes('')){
+        currentStatus.textContent = `Draw`;
+    } else{
+        userChange();
+    }
+
+}
+
+function restart(){
+
 }
