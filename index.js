@@ -21,6 +21,7 @@ let placeholder = ['', '', '', '', '', '', '', '', ''];
 let currentPlayer = 'X';
 let isRunning = false;
 
+// Initializes game
 initializeGame();
 
 function initializeGame(){
@@ -30,6 +31,7 @@ function initializeGame(){
     playAgain.addEventListener('click', restart);
 }
 
+// Checks if a cell is clicked
 function isClicked(){
     const cellIndex = this.getAttribute('cellIndex');
 
@@ -41,6 +43,7 @@ function isClicked(){
     checkWinner();
 }
 
+// Changes User
 function userChange(){
     if (currentPlayer == 'X'){
         currentPlayer = 'O'
@@ -50,11 +53,13 @@ function userChange(){
     currentStatus.textContent = `${currentPlayer}'s Turn`
 }
 
+// Updates the cell when clicked
 function update(cell, index){
     placeholder[index] = currentPlayer;
     cell.textContent = currentPlayer;
 }
 
+// Checks if there is a winner
 function checkWinner(){
     let winner = false;
 
@@ -90,6 +95,7 @@ function checkWinner(){
 
 }
 
+// Restarts game when User clicks Button 'Play Again'
 function restart(){
     currentPlayer = 'X';
     currentStatus.textContent = `${currentPlayer}'s Turn`;
