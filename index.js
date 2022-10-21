@@ -21,3 +21,37 @@ let placeholder = [[''], [''], [''], [''], [''], [''], [''], [''], ['']];
 let currentPlayer = 'X';
 let isRunning = false;
 
+initializeGame();
+
+function initializeGame(){
+    isRunning = true;
+    cells.forEach(cell => cell.addEventListener('click', isClicked));
+    currentStatus.textContent = `${currentPlayer}'s Turn`;
+    playAgain.addEventListener('click', restart);
+}
+
+function isClicked(){
+    const cellIndex = this.getAttribute('cellIndex');
+
+    if (placeholder[cellIndex] != ''){
+        return;
+    }
+
+    update(this, cellIndex);
+    userChange();
+    checkWinner();
+}
+
+function userChange(){
+    if (currentPlayer == 'X'){
+        currentPlayer = 'O'
+    } else {
+        currentPlayer = 'X'
+    }
+    currentStatus.textContent = `${currentPlayer}'s Turn`
+}
+
+function update(cell, index){
+    placeholder[index] = currentPlayer;
+    cell.textContent = currentPlayer;
+}
