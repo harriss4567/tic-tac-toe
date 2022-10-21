@@ -91,5 +91,9 @@ function checkWinner(){
 }
 
 function restart(){
-
+    currentPlayer = 'X';
+    currentStatus.textContent = `${currentPlayer}'s Turn`;
+    cells.forEach(cell => cell.textContent = '');
+    placeholder = ['', '', '', '', '', '', '', '', ''];
+    isRunning = true;
 }
