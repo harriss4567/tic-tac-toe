@@ -1,22 +1,47 @@
 body{
     background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-h1{
+h1,
+h2{
     color: darkred;
-    ;
 }
 
 .cell{
     width: 100px;
     height: 100px;
     border: 2px solid purple;
-    box-shadow: 0 0 0 2px;
+    cursor: pointer;
+    color: darkgoldenrod;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #board{
     display: grid;
     grid-template-columns: repeat(3, auto);
-    width: 225px;
     margin: auto;
+}
+
+#current{
+    text-align: center;
+    margin-top: 35px;
+    border: 3px solid purple;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 25px;
+}
+
+button{
+    background-color: transparent;
+    color: darkgoldenrod;
+    border: 2px yellow;
+    padding: 10px;
+    font-size: 15px;
+    cursor: pointer;
 }
